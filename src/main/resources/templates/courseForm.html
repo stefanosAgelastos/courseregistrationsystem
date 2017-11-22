@@ -25,13 +25,13 @@
 
 <div class="form-group align-items-center">
     <label for="titleDanish">Name of the course</label>
-    <input type="text" class="form-control" id="titleDanish" name="titleDanish" aria-describedby="titleDanishHelp" required="true" />
+    <input type="text" class="form-control" id="titleDanish" name="titleDanish" aria-describedby="titleDanishHelp" required="true" value="example"/>
     <small id="titleDanishHelp" class="form-text text-muted">in Danish</small>
 </div>
 
 <div class="form-group">
     <label for="titleEnglish">Name of the course</label>
-    <input type="text" class="form-control" id="titleEnglish" name="titleEnglish" aria-describedby="titleEnglishHelp" required="true"/>
+    <input type="text" class="form-control" id="titleEnglish" name="titleEnglish" aria-describedby="titleEnglishHelp" required="true" value="example"/>
     <small id="titleEnglishHelp" class="form-text text-muted">in English</small>
 </div>
 
@@ -48,44 +48,44 @@
 
     <div class="form-group">
         <label for="classCode">Code of the class</label>
-        <input type="text" class="form-control" id="classCode" name="classCode" required="true"/>
+        <input type="text" class="form-control" id="classCode" name="classCode" required="true" value="example"/>
     </div>
 
     <div class="form-group">
         <label for="studyProgrammeSelect">Study programme</label>
-        <select multiple="false" class="form-control" id="studyProgrammeSelect" name="studyProgramme">
+        <select class="form-control" id="studyProgrammeSelect" name="studyProgramme" required="true">
             <option th:each="programme : ${programmes}" th:value="${programme.id}" th:text="${programme.studyProgrammeTitle}"> .. </option>
         </select>
     </div>
 
     <div class="form-check form-check-inline">
         <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="elective" id="electiveRadio1" value="true" checked="true"/>
+            <input class="form-check-input" type="radio" name="mandatory" id="electiveRadio1" value="true" checked="true"/>
             Mandatory
         </label>
     </div>
     <div class="form-check form-check-inline">
         <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="elective" id="electiveRadio2" value="false"/>
+            <input class="form-check-input" type="radio" name="mandatory" id="electiveRadio2" value="false"/>
             Elective
         </label>
     </div>
 
     <div class="form-group">
         <label for="ects">ECTS</label>
-        <input type="number" class="form-control" id="ects" name="ects" step="10" min="10" max="60" required="true"/>
+        <input type="number" class="form-control" id="ects" name="ects" step="10" min="10" max="60" required="true" value="20"/>
     </div>
 
 
     <div class="form-check form-check-inline">
         <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="language" id="languageRadio1" value="true" checked="true"/>
+            <input class="form-check-input" type="radio" name="courseLanguage" id="languageRadio1" value="true" checked="true"/>
             Danish
         </label>
     </div>
     <div class="form-check form-check-inline">
         <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="language" id="languageRadio2" value="false"/>
+            <input class="form-check-input" type="radio" name="courseLanguage" id="languageRadio2" value="false"/>
             English
         </label>
     </div>
@@ -95,18 +95,18 @@
         <div class="col">
             <div class="form-group">
                 <label for="minimumStudents">Minimum Students</label>
-                <input type="number" class="form-control" id="minimumStudents" name="minimumStudents" step="1" min="10" max="100" required="true"/>
+                <input type="number" class="form-control" id="minimumStudents" name="minimumStudents" step="1" min="10" max="100" required="true" value="10"/>
             </div>        </div>
         <div class="col">
             <div class="form-group">
                 <label for="expectedStudents">Expected Students</label>
-                <input type="number" class="form-control" id="expectedStudents" name="expectedStudents" step="1" min="10" max="100" required="true"/>
+                <input type="number" class="form-control" id="expectedStudents" name="expectedStudents" step="1" min="10" max="100" required="true" value="20"/>
             </div>
         </div>
         <div class="col">
             <div class="form-group">
                 <label for="maximumStudents">Maximum Students</label>
-                <input type="number" class="form-control" id="maximumStudents" name="maximumStudents" step="1" min="10" max="100" required="true"/>
+                <input type="number" class="form-control" id="maximumStudents" name="maximumStudents" step="1" min="10" max="100" required="true" value="30"/>
             </div>
         </div>
     </div>
@@ -114,31 +114,31 @@
 
     <div class="form-group">
         <label for="prerequisites">Prerequisites</label>
-        <textarea class="form-control" id="prerequisites" name="prerequisites" rows="3"></textarea>
+        <textarea class="form-control" id="prerequisites" name="prerequisites" rows="3" >example</textarea>
     </div>
 
 
     <div class="form-group">
         <label for="learningOutcome">Learning Outcome</label>
-        <textarea class="form-control" id="learningOutcome" name="learningOutcome" rows="3"></textarea>
+        <textarea class="form-control" id="learningOutcome" name="learningOutcome" rows="3" >example</textarea>
     </div>
 
 
     <div class="form-group">
         <label for="content">Content</label>
-        <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+        <textarea class="form-control" id="content" name="content" rows="3" >example</textarea>
     </div>
 
 
     <div class="form-group">
         <label for="learningActivities">Learning Activities</label>
-        <textarea class="form-control" id="learningActivities" name="learningActivities" rows="3"></textarea>
+        <textarea class="form-control" id="learningActivities" name="learningActivities" rows="3" >example</textarea>
     </div>
 
 
     <div class="form-group">
         <label for="examForm">Exam form</label>
-        <textarea class="form-control" id="examForm" name="examForm" rows="3"></textarea>
+        <textarea class="form-control" id="examForm" name="examForm" rows="3" >example</textarea>
     </div>
 
     <div class="form-group">
