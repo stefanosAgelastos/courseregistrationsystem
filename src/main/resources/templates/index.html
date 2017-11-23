@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Registration of KEA students</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#" th:href="@{/}">MyCRUD APP</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#" th:href="@{/}">Create <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/user/show}">Show</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+<div class="jumbotron">
+    <h1 class="display-3">Register a NEW student!!</h1>
+    <p class="lead">Students registration form</p>
+    <hr class="my-4"/>
+    <p>Fill the info for the new student</p>
+    <p class="lead">
+
+    <form action="#" th:action="@{/registerStudents}" th:object="${student}" method="put">
+
+        <div class="form-group align-items-center">
+            <label for="FirstName">Name and Surname of the student</label>
+            <input type="text" class="form-control" id="FirstName" name="studentFirstName" aria-describedby="FirstNameHelp" required="true" />
+            <small id="FirstNameHelp" class="form-text text-muted">student Name</small>
+        </div>
+
+
+        <div class="form-group">
+            <label for="studyProgrammeSelect">Study programme</label>
+            <select multiple="false" class="form-control" id="studyProgrammeSelect" name="studentProgramme">
+                <option th:each="programme : ${programmes}" th:value="${programme.id}" th:text="${programme.studyProgrammeTitle}"> .. </option>
+            </select>
+        </div>
+
+        <div class="form-group align-items-center">
+            <label for="Username">Student username(KEA student mail)</label>
+            <input type="text" class="form-control" id="Username" name="studentUsername" aria-describedby="UsernameHelp" required="true" />
+            <small id="UsernameHelp" class="form-text text-muted">student username</small>
+        </div>
+
+        <div class="form-group align-items-center">
+            <label for="Password">Student password (KEA passwords)</label>
+            <input type="text" class="form-control" id="Password" name="studentPassword" aria-describedby="PasswordHelp" required="true" />
+            <small id="PasswordHelp" class="form-text text-muted">student password</small>
+        </div>
+
+
+        <button type="submit" style=" background-color: mediumspringgreen">Save user</button>
+    </form>
+    </p>
+
+</div>
+
+
+
+
+</body>
+</html>

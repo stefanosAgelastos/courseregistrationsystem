@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>User</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#" th:href="@{/}">KEA</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav mr-auto">
+             <li class="nav-item active">
+                 <a class="nav-link" href="#" th:href="@{/}">Create <span class="sr-only">(current)</span></a>
+             </li>
+         </ul>-->
+
+    <!-- </div>-->
+</nav>
+
+
+<div class="jumbotron">
+    <h1 class="display-3">Students List</h1>
+    <p class="lead">
+        <!--<div class="alert alert-dark" role="alert" th:text="${student}">-->
+        <!--This is a dark alert—check it out!-->
+        <!--</div>-->
+    </p>
+    <hr class="my-4"/>
+
+    <p class="lead">
+
+
+
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <td>Name and Surname</td>
+            <td>Study programme</td>
+            <td>Student username</td>
+            <td>Student password</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${studentslist.empty}">
+            <td colspan="3">No registered students</td>
+        </tr>
+        <tr th:each="student : ${studentslist}">
+            <!--<td><a href="view.html" th:href="@{'/user/edit?id=' + ${user.id}}" th:text="${user.name}">Name ...</a></td>-->
+            <td th:text="${student.studentName}"></td>
+            <td th:text="${student.studyProgramme.studyProgrammeTitle}"></td>
+            <td th:text="${student.studentUserName}"></td>
+            <td th:text="${student.studentPassword}"></td>
+            <!--<td th:text="${#calendars.format(task.dueTo)}">July 11, 2012 2:17:16 PM CDT</td>-->
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="/">
+        <button type="button" style=" background-color: mediumspringgreen">Go Back</button>
+    </a>
+
+    </p>
+</div>
+
+
+</body>
+</html>
