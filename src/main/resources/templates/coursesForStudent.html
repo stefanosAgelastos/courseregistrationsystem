@@ -11,9 +11,11 @@
 </head>
 
 <body>
+
 <div class="jumbotron">
     <div class="container">
         <h1 class="display-3">Available Courses</h1>
+        <p class="lead" th:text=" 'Hello '+ ${student.studentName}+'.'"> Hello studentName.</p>
         <p class="lead">Choose the courses you would like to sign up for.</p>
         <hr class="my-4"/>
     </div>
@@ -21,7 +23,7 @@
 
 <div class="container">
 
-    <form action="#" th:action="@{/student/{studentId}/courses(studentId=${studentId})}" method="post">
+    <form action="#" th:action="@{/student}" method="post">
 
     <div class="form-check" th:each="course : ${courses}">
         <label class="form-check-label">
@@ -40,15 +42,9 @@
 </div>
 <br/>
 
-<div class="jumbotron">
-    <div class="container">
-        <!--
-                <h1 class="display-3">Edit course details</h1>
-                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        -->
-        <hr class="my-4"/>
-    </div>
-</div>
+<nav class="navbar fixed-bottom navbar-light bg-faded">
+    <a class="navbar-brand" href="#">Fixed bottom</a>
+</nav>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

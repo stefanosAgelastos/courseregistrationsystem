@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Hello, world!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"/>
+</head>
+<body>
+<br/>
+
+
+
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-3" th:text="${course.classCode} +' '+ ${course.titleDanish} +' '+ ${course.titleEnglish}">Selected course details</h1>
+        <div>
+            <p> See course details</p>
+        <hr class="my-4"/>
+    </div>
+</div>
+</div>
+<br/>
+
+
+<div class="container">
+    <div  >
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td>Course Title in Danish</td>
+        <td th:text="${course.titleDanish}"></td>
+            </tr>
+            <tr>
+                <td>Course Title in English</td>
+                <td th:text="${course.titleEnglish}"></td>
+            </tr>
+            <tr>
+                <td>Semester</td>
+                <td th:text="${course.semester}"></td>
+            </tr>
+            <tr>
+                <td>Study Programme</td>
+                <td th:text="${course.studyProgramme.studyProgrammeTitle}"></td>
+            </tr>
+            <tr>
+                <td>Mandatory or elective</td>
+                <td th:if="${course.mandatory}==true">Mandatory</td>
+                <td th:unless="${course.mandatory}==true">Elective</td>
+            </tr>
+            <tr>
+                <td>ECTS</td>
+                <td th:text="${course.ects}"></td>
+            </tr>
+            <tr>
+                <td>Course Language</td>
+                <td th:if="${course.courseLanguage}==true">English</td>
+                <td th:if="${course.courseLanguage}==false">Danish</td>
+            </tr>
+
+            <tr>
+                <td>Minimum amount of students</td>
+                <td th:text="${course.minimumStudents}"></td>
+            </tr>
+            <tr>
+            <td>Maximum amount of students</td>
+            <td th:text="${course.maximumStudents}"></td>
+            </tr>
+            <tr>
+            <td>Prerequisites</td>
+            <td th:text="${course.prerequisites}"></td>
+            </tr>
+            <tr>
+            <td>Learning outcome</td>
+            <td th:text="${course.learningOutcome}"></td>
+            </tr>
+            <tr>
+            <td>Content</td>
+            <td th:text="${course.content}"></td>
+            </tr>
+            <tr>
+            <td>Learning Activities</td>
+            <td th:text="${course.learningActivities}"></td>
+            </tr>
+            <tr>
+            <td>Exam Form</td>
+            <td th:text="${course.examForm}"></td>
+            </tr>
+            <tr>
+            <td>Learning Activities</td>
+            <td th:text="${course.learningActivities}"></td>
+            </tr>
+            <tr>
+                <td> Teachers</td>
+            <td>
+                <div th:each="teacher : ${course.teachers}"  th:text="${teacher.name}"> <br/> </div>
+
+            </td>
+            </tr>
+
+
+        </table>
+
+    </div>
+    <form th:action="@{/courses/{courseId}/editcoursedetails(courseId=${course.id})}" method="get">
+        <button type="submit" class="btn btn-primary">Edit</button>
+        <!--style="btn btn-primary""background-color: mediumspringgreen"-->
+    </form>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+

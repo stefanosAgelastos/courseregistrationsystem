@@ -11,13 +11,21 @@
 </head>
 
 <body>
-<div class="jumbotron">
+<nav class="navbar fixed-top navbar-light bg-faded"  style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="#">Edit course details</a>
+    <button formaction="/logout" class="btn align-right btn-outline-secondary" type="button">Sign Out</button>
+</nav>
+
+<!--<div class="jumbotron">
     <div class="container">
     <h1 class="display-3">Edit course details</h1>
     <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
     <hr class="my-4"/>
     </div>
-</div>
+</div>-->
+<br/>
+<br/>
+<br/>
 
 <div class="container">
 
@@ -96,7 +104,8 @@
             <div class="form-group">
                 <label for="minimumStudents">Minimum Students</label>
                 <input type="number" class="form-control" id="minimumStudents" name="minimumStudents" step="1" min="10" max="100" required="true" value="10"/>
-            </div>        </div>
+            </div>
+        </div>
         <div class="col">
             <div class="form-group">
                 <label for="expectedStudents">Expected Students</label>
@@ -142,10 +151,12 @@
     </div>
 
     <div class="form-group">
-        <label for="studyProgrammeSelect">Teachers</label>
-        <select multiple="true" class="form-control" id="teachers" name="teachers">
+        <label for="teachers">Teachers</label>
+        <select multiple="true" class="form-control" aria-describedby="teacherHelp" id="teachers" name="teachers">
             <option th:each="teacher : ${teachers}" th:value="${teacher.id}" th:text="${teacher.name}"> teacher name here.. </option>
         </select>
+        <small id="teacherHelp" class="form-text text-muted">select the teachers you will be teaching with.</small>
+
     </div>
 
 
@@ -154,16 +165,25 @@
 
 </div>
 <br/>
+<br/>
+<br/>
+<br/>
 
-<div class="jumbotron">
+<!--<div class="jumbotron">
     <div class="container">
-<!--
+&lt;!&ndash;
         <h1 class="display-3">Edit course details</h1>
         <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
--->
+&ndash;&gt;
         <hr class="my-4"/>
     </div>
-</div>
+</div>-->
+
+<nav class="navbar fixed-bottom navbar-light bg-faded" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="#">Fixed bottom</a>
+    <button class="btn align-right btn-outline-secondary" type="button">Save</button>
+</nav>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

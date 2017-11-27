@@ -6,6 +6,7 @@ import kea.project.exam.courseregistrationsystem.persistence.CourseRepository;
 import kea.project.exam.courseregistrationsystem.persistence.StudentRepository;
 import kea.project.exam.courseregistrationsystem.persistence.StudyProgrammeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Role;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.swing.text.html.HTMLDocument;
+import java.security.Principal;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -33,19 +35,21 @@ public class StudentController {
 
 
 
+
+
+
  /*
  *  this is the method that handles the initial GET request from the student.
  **/
-
-    @GetMapping("/student/{studentId}/courses")
-    public ModelAndView showCoursePageForStudent(@PathVariable int studentId){
-        Student thisStudent = studentRepository.findOne(studentId);
+    @GetMapping("/student")
+    public ModelAndView showCoursePageForStudent(Principal principal){
+        Student thisStudent = studentRepository.findStudentByStudentUserName(principal.getName());
 
         if(thisStudent.getCourses().isEmpty()){
 
             ModelAndView mv = new ModelAndView("coursesForStudent");
             mv.getModel().put("courses", courseRepository.findAll());
-            mv.getModel().put("studentId", thisStudent.getId());
+            mv.getModel().put("student", thisStudent);
 
             return mv;
 
@@ -53,7 +57,7 @@ public class StudentController {
 
             ModelAndView mv = new ModelAndView("selectedCoursesForStudent");
             mv.getModel().put("courses", thisStudent.getCourses());
-            mv.getModel().put("studentId", thisStudent.getId());
+            mv.getModel().put("student", thisStudent);
             return mv;
         }
 
@@ -63,10 +67,11 @@ public class StudentController {
     /*
     * This method handles the registration of the courses to a student
     * */
-    @PostMapping(value = "/student/{studentId}/courses")
-    public ModelAndView showRegisteredCoursesForStudent(@PathVariable int studentId,
-                                                        @RequestParam Map<String, String> queryMap){
-        Student thisStudent = studentRepository.findOne(studentId);
+    @PostMapping(value = "/student")
+    public ModelAndView showRegisteredCoursesForStudent(@RequestParam Map<String, String> queryMap,
+                                                        Principal principal){
+
+        Student thisStudent = studentRepository.findStudentByStudentUserName(principal.getName());
 
         Set<String> selectedCourses = queryMap.keySet();
         System.out.println(selectedCourses);
@@ -80,7 +85,7 @@ public class StudentController {
 
         ModelAndView mv = new ModelAndView("selectedCoursesForStudent");
         mv.getModel().put("courses", thisStudent.getCourses());
-        mv.getModel().put("studentId", thisStudent.getId());
+        mv.getModel().put("student", thisStudent);
 
         return mv;
     }
@@ -89,18 +94,17 @@ public class StudentController {
     /*
     * This method erases the previous selection of courses for a student
     */
-    @RequestMapping(value = "/student/{studentId}/courses", params = "cancel")
-    public ModelAndView cancelRegistrationAndSendSelectionPage(@PathVariable int studentId){
+    @RequestMapping(value = "/student", params = "cancel")
+    public ModelAndView cancelRegistrationAndSendSelectionPage(Principal principal){
 
-        System.out.println("Cancel registration");
-        Student thisStudent = studentRepository.findOne(studentId);
+        Student thisStudent = studentRepository.findStudentByStudentUserName(principal.getName());
 
         thisStudent.getCourses().removeAll(thisStudent.getCourses());
         studentRepository.save(thisStudent);
 
         ModelAndView mv = new ModelAndView("coursesForStudent");
         mv.getModel().put("courses", courseRepository.findAll());
-        mv.getModel().put("studentId", thisStudent.getId());
+        mv.getModel().put("student", thisStudent);
 
         return mv;
 

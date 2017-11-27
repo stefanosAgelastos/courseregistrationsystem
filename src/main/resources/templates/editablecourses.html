@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Edit!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"/>
+</head>
+
+<body>
+
+<div class="jumbotron">
+    <div class="container">
+        <h3 class="display-3" th:text="${course.classCode} +' '+ ${course.titleDanish} +' '+ ${course.titleEnglish}">Selected course details</h3>
+        <div>
+            <p> Edit course details</p>
+            <hr class="my-4"/>
+        </div>
+    </div>
+</div>
+<br/>
+
+
+<div class="container">
+
+    <form action="/save" method="get">
+
+        <div class="form-group align-items-center">
+            <label for="titleDanish">Name of the course</label>
+            <input type="text" class="form-control" id="titleDanish" name="titleDanish" aria-describedby="titleDanishHelp" required="true" th:value="${course.titleDanish}"/>
+            <small id="titleDanishHelp" class="form-text text-muted">in Danish</small>
+        </div>
+
+        <div class="form-group">
+            <label for="titleEnglish">Name of the course</label>
+            <input type="text" class="form-control" id="titleEnglish" name="titleEnglish" aria-describedby="titleEnglishHelp" required="true" th:value="${course.titleEnglish}"/>
+            <small id="titleEnglishHelp" class="form-text text-muted">in English</small>
+        </div>
+
+
+        <div class="form-group">
+            <label for="semesterSelection">Semester</label>
+            <input type="text" class="form-control" id="semesterSelection" name="semester" aria-describedby="semesterSelectionHelp" required="true" th:value="${course.semester}"/>
+            <small id="semesterSelectionHelp" class="form-text text-muted">Semester</small>
+        </div>
+
+        <div class="form-group">
+            <label for="classCode">Code of the class</label>
+            <input type="text" class="form-control" id="classCode" name="classCode" required="true" th:value="${course.classCode}"/>
+        </div>
+
+        <div class="form-group">
+            <label for="studyProgrammeSelect">Study programme, that was selected before</label>
+            <br></br>
+            <label  th:text="${course.studyProgramme.studyProgrammeTitle}"/>
+            <select class="form-control" id="studyProgrammeSelect" name="studyProgramme" required="true">
+                <option th:each="programme : ${programmes}" th:value="${programme.id}" th:text="${programme.studyProgrammeTitle}"> .. </option>
+            </select>
+
+        </div>
+
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="mandatory" id="electiveRadio1" th:value="${course.mandatory}" checked="true"/>
+                Mandatory
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="mandatory" id="electiveRadio2" th:value="${course.mandatory}"/>
+                Elective
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label for="ects">ECTS</label>
+            <input type="number" class="form-control" id="ects" name="ects" step="10" min="10" max="60" required="course.etcs" th:value="${course.ects}"/>
+        </div>
+
+
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="courseLanguage" id="languageRadio1" th:value="${course.courseLanguage}" checked="true"/>
+                Danish
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="courseLanguage" id="languageRadio2" th:value="${course.courseLanguage}"/>
+                English
+            </label>
+        </div>
+
+
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="minimumStudents">Minimum Students</label>
+                    <input type="number" class="form-control" id="minimumStudents" name="minimumStudents" step="1" min="10" max="100" required="true" th:value="${course.minimumStudents}"/>
+                </div>        </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="expectedStudents">Expected Students</label>
+                    <input type="number" class="form-control" id="expectedStudents" name="expectedStudents" step="1" min="10" max="100" required="true" th:value="${course.expectedStudents}"/>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="maximumStudents">Maximum Students</label>
+                    <input type="number" class="form-control" id="maximumStudents" name="maximumStudents" step="1" min="10" max="100" required="true" th:value="${course.maximumStudents}"/>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="prerequisites">Prerequisites</label>
+            <input class="form-control" id="prerequisites" name="prerequisites" rows="3" th:value="${course.prerequisites}"/>
+        </div>
+
+
+        <div class="form-group">
+            <label for="learningOutcome">Learning Outcome</label>
+            <input class="form-control" id="learningOutcome" name="learningOutcome" rows="3" th:value="${course.learningOutcome}"/>
+        </div>
+
+
+        <div class="form-group">
+            <label for="content">Content</label>
+            <input class="form-control" id="content" name="content" rows="3" th:value="${course.content}"/>
+        </div>
+
+
+        <div class="form-group">
+            <label for="learningActivities">Learning Activities</label>
+            <input class="form-control" id="learningActivities" name="learningActivities" rows="3" th:value="${course.learningActivities}"/>
+        </div>
+
+
+        <div class="form-group">
+            <label for="examForm">Exam form</label>
+            <input class="form-control" id="examForm" name="examForm" rows="3" th:value="${course.examForm}"/>
+        </div>
+
+        <div class="form-group">
+            <label for="teachers">Teachers</label>
+            <select multiple="true" class="form-control" aria-describedby="teacherHelp" id="teachers" name="teachers" required="required">
+                <option th:each="teacher : ${teachers}" th:value="${teacher.id}" th:text="${teacher.name}"> teacher name here.. </option>
+            </select>
+            <small id="teacherHelp" class="form-text text-muted">Select the teachers teaching this course. Selecting yourself is optional. There must be at least one teacher selected</small>
+        </div>
+
+        <input type="hidden" name="edit" th:value="${course.id}"/>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+<br/>
+
+<div class="jumbotron">
+    <div class="container">
+        <!--
+                <h1 class="display-3">Edit course details</h1>
+                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        -->
+        <hr class="my-4"/>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+</html>
