@@ -6,7 +6,7 @@
 	<groupId>kea.project.exam</groupId>
 	<artifactId>courseregistrationsystem</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>courseregistrationsystem</name>
 	<description>Demo project for Spring Boot</description>
