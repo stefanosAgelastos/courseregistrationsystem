@@ -22,7 +22,7 @@
 
 <div class="container">
 
-<form action="/teacher/delete" id="delete" method="post">
+<form th:action="@{/teacher/delete}" id="delete" method="post">
     <div align="left" class="form-check" th:each="course : ${courses}">
         <label class="form-check-label">
             <input class="form-check-input" type="checkbox" th:name="${course.id}"/>
