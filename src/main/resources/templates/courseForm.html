@@ -11,11 +11,6 @@
 </head>
 
 <body>
-<nav class="navbar fixed-top navbar-light bg-faded"  style="background-color: #e3f2fd;">
-    <a class="navbar-brand" href="#">Edit course details</a>
-    <button formaction="/logout" class="btn align-right btn-outline-secondary" type="button">Sign Out</button>
-</nav>
-
 <!--<div class="jumbotron">
     <div class="container">
     <h1 class="display-3">Edit course details</h1>
@@ -23,13 +18,20 @@
     <hr class="my-4"/>
     </div>
 </div>-->
+<nav class="navbar fixed-top navbar-light bg-faded"  style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="#">Edit course details</a>
+    <form th:action="@{/logout}">
+        <input class="btn align-right btn-outline-secondary" type="submit" value="Sign out"/>
+    </form>
+</nav>
+
 <br/>
 <br/>
 <br/>
 
 <div class="container">
 
-<form action="/save" method="get">
+<form th:action="@{/save}" id="save" method="post">
 
 <div class="form-group align-items-center">
     <label for="titleDanish">Name of the course</label>
@@ -167,7 +169,6 @@
 <br/>
 <br/>
 <br/>
-<br/>
 
 <!--<div class="jumbotron">
     <div class="container">
@@ -179,9 +180,12 @@
     </div>
 </div>-->
 
+
 <nav class="navbar fixed-bottom navbar-light bg-faded" style="background-color: #e3f2fd;">
-    <a class="navbar-brand" href="#">Fixed bottom</a>
-    <button class="btn align-right btn-outline-secondary" type="button">Save</button>
+    <label class="navbar-brand">Course registration system.</label>
+    <form th:action="@{{back}(back=${back})}">
+        <input class="btn align-right btn-outline-secondary" type="submit" value="Cancel"/>
+    </form>
 </nav>
 
 

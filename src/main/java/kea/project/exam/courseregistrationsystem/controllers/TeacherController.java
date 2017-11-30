@@ -61,6 +61,8 @@ public class TeacherController {
 
         ModelAndView mv = new ModelAndView("courselist");
         mv.getModel().put("courses", courseIterable);
+        mv.getModel().put("teacher", loggedInTeacher);
+
 
         return mv;
     }
@@ -84,6 +86,7 @@ public class TeacherController {
         Iterable<Course> courseIterable = courseRepository.findCoursesByTeachersIsContaining(loggedInTeacher);
         ModelAndView mv = new ModelAndView("courselist");
         mv.getModel().put("courses", courseIterable);
+        mv.getModel().put("teacher", loggedInTeacher);
         return mv;
     }
 
@@ -107,6 +110,7 @@ public class TeacherController {
         ModelAndView mv = new ModelAndView("courseForm");
         mv.getModel().put("teachers", teacherIterable);
         mv.getModel().put("programmes", studyProgrammeIterable);
+        mv.getModel().put("back", "/teacher");
 
         return mv;
     }
@@ -210,7 +214,7 @@ public class TeacherController {
 
         ModelAndView mv = new ModelAndView("courselist");
         mv.getModel().put("courses", courseIterable);
-
+        mv.getModel().put("teacher", loggedInTeacher);
 
         return mv;
 

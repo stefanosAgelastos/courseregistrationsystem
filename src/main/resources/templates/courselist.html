@@ -12,15 +12,44 @@
 </head>
 
 <body>
-<div class="jumbotron">
+<!--<div class="jumbotron">
     <div class="container">
         <h1 class="display-3">See all courses</h1>
         <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
         <hr class="my-4"/>
     </div>
-</div>
+</div>-->
+
+
+
+
+
+<nav class="navbar fixed-top navbar-light bg-faded"  style="background-color: #e3f2fd;">
+    <label class="navbar-brand" th:text=" 'Hello '+ ${teacher.name}+'. Here is all the courses you are teaching.'">Here is all the courses you are teaching Alex</label>
+    <form th:action="@{/logout}">
+        <input class="btn align-right btn-outline-secondary" type="submit" value="Sign out"/>
+    </form>
+</nav>
+
+<br/>
+<br/>
+<br/>
+
 
 <div class="container">
+
+    <br/>
+    <br/>
+    <br/>
+    <label>Click on the Course to see details and edit.</label>
+    <br/>
+    <label>Select any course you wish to delete,</label>
+    <br/>
+    <label>or register a new Course you will be teaching.</label>
+    <br/>
+    <br/>
+
+
 
 <form th:action="@{/teacher/delete}" id="delete" method="post">
     <div align="left" class="form-check" th:each="course : ${courses}">
@@ -38,7 +67,7 @@
             </div>
         </div>
         <div class="col">
-            <form action="/teacher/newcoursedetails">
+            <form th:action="@{/teacher/newcoursedetails}">
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Register new course</button>
             </div>
@@ -49,15 +78,19 @@
 
 <br/>
 
-<div class="jumbotron">
+<!--<div class="jumbotron fixed-bottom ">
     <div class="container">
-        <!--
+        &lt;!&ndash;
                 <h1 class="display-3">Edit course details</h1>
                 <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        -->
+        &ndash;&gt;
         <hr class="my-4"/>
     </div>
-</div>
+</div>-->
+
+<nav class="navbar fixed-bottom navbar-light bg-faded" style="background-color: #e3f2fd;">
+    <label class="navbar-brand">Course registration system.</label>
+</nav>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
