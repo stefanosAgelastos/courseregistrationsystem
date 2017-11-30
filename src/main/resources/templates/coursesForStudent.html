@@ -11,17 +11,22 @@
 </head>
 
 <body>
+<nav class="navbar fixed-top navbar-light bg-faded"  style="background-color: #B5C1CA;">
+    <span class="navbar-text font-weight-bold" th:text=" 'Hello '+ ${student.studentName}+'. Choose the courses you would like to sign up for'"> Hello Student X </span>
+    <form th:action="@{/logout}">
+        <input class="btn align-right btn-danger" type="submit" value="Sign out"/>
+    </form>
+</nav>
 
-<div class="jumbotron">
-    <div class="container">
-        <h1 class="display-3">Available Courses</h1>
-        <p class="lead" th:text=" 'Hello '+ ${student.studentName}+'.'"> Hello studentName.</p>
-        <p class="lead">Choose the courses you would like to sign up for.</p>
-        <hr class="my-4"/>
-    </div>
-</div>
+<br/>
+<br/>
+<br/>
+
 
 <div class="container">
+    <br/>
+    <br/>
+    <br/>
 
     <form action="#" th:action="@{/student}" method="post">
 
@@ -31,7 +36,7 @@
             <a th:text="${course.classCode} +' '+ ${course.titleDanish} +' '+ ${course.titleEnglish}" th:href="@{/courses/{courseId}/details(courseId=${course.id})}"> .. </a>
         </label>
     </div>
-        <input type="submit" value="Register to Courses"/>
+        <input type="submit" class="btn btn-outline-success" value="Register to Courses"/>
     </form>
 
 
@@ -40,10 +45,10 @@
         <br/>
     </div>
 </div>
-<br/>
 
-<nav class="navbar fixed-bottom navbar-light bg-faded">
-    <a class="navbar-brand" href="#">Fixed bottom</a>
+
+<nav class="navbar fixed-bottom navbar-light bg-faded" style="background-color: #B5C1CA;">
+    <span class="navbar-text"> Course registration system. </span>
 </nav>
 
 <!-- Optional JavaScript -->

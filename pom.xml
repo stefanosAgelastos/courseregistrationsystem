@@ -21,9 +21,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-<!--
-		<spring-cloud-aws-version>1.0.4.RELEASE</spring-cloud-aws-version>
--->
 		<java.version>1.8</java.version>
 	</properties>
 
@@ -63,41 +60,7 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-		<!-- Cloud dependencies -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-aws-autoconfigure</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-aws-jdbc</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-aws-jdbc</artifactId>
-			<version>1.0.0.RELEASE</version>
-		</dependency>
-
-		<!--		<dependency>
-                    <groupId>org.springframework.cloud</groupId>
-                    <artifactId>spring-cloud-starter-aws</artifactId>
-                </dependency>
-
-
-
-                <dependency>
-                    <groupId>org.springframework.cloud</groupId>
-                    <artifactId>spring-cloud-aws-context</artifactId>
-                    <version>${spring-cloud-aws-version}</version>
-                </dependency>-->
-
-
 	</dependencies>
-
-
-
 
 	<build>
 		<plugins>

@@ -12,15 +12,28 @@
 </head>
 
 <body>
-<div class="jumbotron">
-    <div class="container">
-        <h1 class="display-3">See all courses</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr class="my-4"/>
-    </div>
-</div>
+
+<nav class="navbar fixed-top navbar-light bg-faded"  style="background-color: #B5C1CA;">
+    <span class="navbar-text font-weight-bold" th:text=" 'Hello '+ ${teacher.name}+'. These are the courses you teach.'">Hello Alex</span>
+    <form th:action="@{/logout}">
+        <input class="btn align-right btn-danger" type="submit" value="Sign out"/>
+    </form>
+</nav>
+
+<br/>
+<br/>
+<br/>
+
 
 <div class="container">
+
+
+    <br/>
+    <br/>
+    <br/>
+
+
+
 
 <form th:action="@{/teacher/delete}" id="delete" method="post">
     <div align="left" class="form-check" th:each="course : ${courses}">
@@ -30,17 +43,19 @@
         </label>
     </div>
 </form>
+    <br/>
+    <br/>
 
     <div class="row">
         <div class="col">
             <div class="form-group">
-                <button type="submit" form="delete" class="btn btn-primary">Delete selected Courses</button>
+                <button type="submit" form="delete" class="btn btn-outline-danger">Delete selected Courses</button>
             </div>
         </div>
         <div class="col">
-            <form action="/teacher/newcoursedetails">
+            <form th:action="@{/teacher/newcoursedetails}">
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Register new course</button>
+                <button type="submit" class="btn btn-outline-success">Register new course</button>
             </div>
             </form>
         </div>
@@ -49,15 +64,9 @@
 
 <br/>
 
-<div class="jumbotron">
-    <div class="container">
-        <!--
-                <h1 class="display-3">Edit course details</h1>
-                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        -->
-        <hr class="my-4"/>
-    </div>
-</div>
+<nav class="navbar fixed-bottom navbar-light bg-faded" style="background-color: #B5C1CA;">
+    <span class="navbar-text"> Course registration system. </span>
+</nav>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
