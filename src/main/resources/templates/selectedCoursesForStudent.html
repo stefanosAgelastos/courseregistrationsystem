@@ -11,17 +11,22 @@
 </head>
 
 <body>
-<div class="jumbotron">
-    <div class="container">
-        <h1 class="display-3">Your Courses</h1>
-        <p class="lead" th:text=" 'These are the courses you have signed up for '+ ${student.studentName}+'.'"> These are the courses you have signed up for studentName.</p>
-        <p class="lead">You can cancel the registration and register again if you want to.</p>
-        <hr class="my-4"/>
-    </div>
-</div>
+
+<nav class="navbar fixed-top navbar-light bg-faded"  style="background-color: #B5C1CA;">
+    <span class="navbar-text font-weight-bold" th:text=" 'These are the courses you have signed up for '+ ${student.studentName}+'. You can cancel the registration and register again if you want to.'">Hello Student X, registered Courses: </span>
+    <form th:action="@{/logout}">
+        <input class="btn align-right btn-danger" type="submit" value="Sign out"/>
+    </form>
+</nav>
+
+<br/>
+<br/>
+<br/>
 
 <div class="container">
-
+    <br/>
+    <br/>
+    <br/>
 
     <ul>
         <li th:each="course : ${courses}" th:text="${course.classCode} +' '+ ${course.titleDanish} +' '+ ${course.titleEnglish}">course details</li>
@@ -29,20 +34,14 @@
         <br/>
     <form action="#" th:action="@{/student}" method="get">
         <input type="hidden" name="cancel"/>
-        <input type="submit" value="Cancel Registration"/>
+        <input type="submit" class="btn btn-outline-danger" value="Cancel Registration"/>
     </form>
 </div>
 <br/>
 
-<div class="jumbotron">
-    <div class="container">
-        <!--
-                <h1 class="display-3">Edit course details</h1>
-                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        -->
-        <hr class="my-4"/>
-    </div>
-</div>
+<nav class="navbar fixed-bottom navbar-light bg-faded" style="background-color: #B5C1CA;">
+    <span class="navbar-text"> Course registration system. </span>
+</nav>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

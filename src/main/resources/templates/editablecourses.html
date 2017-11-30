@@ -12,21 +12,21 @@
 
 <body>
 
-<div class="jumbotron">
-    <div class="container">
-        <h3 class="display-3" th:text="${course.classCode} +' '+ ${course.titleDanish} +' '+ ${course.titleEnglish}">Selected course details</h3>
-        <div>
-            <p> Edit course details</p>
-            <hr class="my-4"/>
-        </div>
-    </div>
-</div>
+<nav class="navbar fixed-top navbar-light bg-faded"  style="background-color: #B5C1CA;">
+    <span class="navbar-text font-weight-bold" th:text="'Edit details for '+${course.classCode} +' course. Title: '+ ${course.titleDanish} +' '+ ${course.titleEnglish}">Edit course X details</span>
+    <form th:action="@{/logout}">
+        <input class="btn align-right btn-danger" type="submit" value="Sign out"/>
+    </form>
+</nav>
+
+<br/>
+<br/>
 <br/>
 
 
 <div class="container">
 
-    <form action="/save" method="get">
+    <form th:action="@{/save}" method="post">
 
         <div class="form-group align-items-center">
             <label for="titleDanish">Name of the course</label>
@@ -155,21 +155,19 @@
 
         <input type="hidden" name="edit" th:value="${course.id}"/>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-outline-success">Submit</button>
     </form>
 
 </div>
 <br/>
-
-<div class="jumbotron">
-    <div class="container">
-        <!--
-                <h1 class="display-3">Edit course details</h1>
-                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        -->
-        <hr class="my-4"/>
-    </div>
-</div>
+<br/>
+<br/>
+<nav class="navbar fixed-bottom navbar-light bg-faded" style="background-color: #B5C1CA;">
+    <span class="navbar-text"> Course registration system. </span>
+    <form th:action="@{/courses/{courseId}/details(courseId=${course.id})}">
+        <input class="btn align-right btn-outline-danger" type="submit" value="Cancel"/>
+    </form>
+</nav>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

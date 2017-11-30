@@ -73,16 +73,27 @@ public class CourseController {
    @RequestMapping("/courses/{courseId}/details")
     public ModelAndView showCourseDetails(@PathVariable int courseId,
                                           Authentication authentication){
-               System.out.println("ID is "+courseId);
-          Course course= courseRepository.findOne(courseId);
-       System.out.println(course.getTeachers());
+
+       String backUrl;
+       boolean canEdit;
+        if(authentication.getAuthorities().iterator().next().toString().equals("ROLE_TEACHER")){
+            backUrl="/teacher";
+            canEdit=true;
+        }else{
+            backUrl="/student";
+            canEdit=false;
+        }
+       Course course= courseRepository.findOne(courseId);
        Iterable<Course> courseIterable = courseRepository.findAll();
 
 
           ModelAndView mv = new ModelAndView("coursedetails");
           mv.getModel().put("courses", courseIterable);
           mv.getModel().put("course", course);
-          return mv;
+          mv.getModel().put("canEdit",canEdit);
+       mv.getModel().put("back", backUrl);
+
+       return mv;
       }
 /*
 

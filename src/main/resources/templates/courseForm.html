@@ -11,17 +11,11 @@
 </head>
 
 <body>
-<!--<div class="jumbotron">
-    <div class="container">
-    <h1 class="display-3">Edit course details</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-    <hr class="my-4"/>
-    </div>
-</div>-->
-<nav class="navbar fixed-top navbar-light bg-faded"  style="background-color: #e3f2fd;">
-    <a class="navbar-brand" href="#">Edit course details</a>
+
+<nav class="navbar fixed-top navbar-light bg-faded"  style="background-color: #B5C1CA;">
+    <span class="navbar-text font-weight-bold">Edit new course details</span>
     <form th:action="@{/logout}">
-        <input class="btn align-right btn-outline-secondary" type="submit" value="Sign out"/>
+        <input class="btn align-right btn btn-danger" type="submit" value="Sign out"/>
     </form>
 </nav>
 
@@ -162,7 +156,7 @@
     </div>
 
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-outline-success">Submit</button>
 </form>
 
 </div>
@@ -170,21 +164,12 @@
 <br/>
 <br/>
 
-<!--<div class="jumbotron">
-    <div class="container">
-&lt;!&ndash;
-        <h1 class="display-3">Edit course details</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-&ndash;&gt;
-        <hr class="my-4"/>
-    </div>
-</div>-->
 
 
-<nav class="navbar fixed-bottom navbar-light bg-faded" style="background-color: #e3f2fd;">
-    <label class="navbar-brand">Course registration system.</label>
+<nav class="navbar fixed-bottom navbar-light bg-faded" style="background-color: #B5C1CA;">
+    <span class="navbar-text"> Course registration system. </span>
     <form th:action="@{{back}(back=${back})}">
-        <input class="btn align-right btn-outline-secondary" type="submit" value="Cancel"/>
+        <input class="btn align-right btn-outline-danger" type="submit" value="Cancel"/>
     </form>
 </nav>
 
