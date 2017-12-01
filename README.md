@@ -36,11 +36,11 @@ Page displaying the selected courses.
 - We have a VPC and two subnets in two different availablility zones.
 - An internet gateway attached to the VPC.
 - An RDS instance on the subnet group with a security group that permits traffic only from within the VPC.
-- Two subnets in two different availability zones, for two ec2 instances.
+- Two subnets in two different availability zones, for two EC2 instances.
 - Each instance has a tomcat8 java servlet container installed and running.
-- One of the ec2 instances has Jenkins automation server installed, as a deployment tool, for building, testing and deploying the system
-on both ec2 instances.
-- We also attached an ELB for distributing traffic across our ec2 instances, but removed it for economic reasons. 
+- One of the EC2 instances has Jenkins automation server installed, as a deployment tool, for building, testing and deploying the system
+on both EC2 instances.
+- We also attached an ELB for distributing traffic across our EC2 instances, but removed it for economic reasons. 
 
 One can have read only access to our setup, by logging in [here](https://954604134118.signin.aws.amazon.com/console) and using the following credentials:
 
