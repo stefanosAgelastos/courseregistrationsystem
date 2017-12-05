@@ -43,7 +43,7 @@
 
         <div class="form-group">
             <label for="semesterSelection">Semester</label>
-            <input type="text" class="form-control" id="semesterSelection" name="semester" aria-describedby="semesterSelectionHelp" required="true" th:value="${course.semester}"/>
+            <input type="text" class="form-control" id="semesterSelection" name="semester" aria-describedby="semesterSelectionHelp" required="true" th:value="${course.semester}" step="1" min="10" max="100"/>
             <small id="semesterSelectionHelp" class="form-text text-muted">Semester</small>
         </div>
 
